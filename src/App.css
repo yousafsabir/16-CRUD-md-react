@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-add-btn: #007cff;
+  --clr-primary: #1ba0bb;
+  --clr-secondary: #df3541;
+}
+
+.App {
+  /* measurements */
+  width: 800px;
+  margin: 50px auto;
+  /* colors */
+  background-color: #fff;
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form input {
+  padding: 8px 24px;
+  border-radius: 10px;
+}
