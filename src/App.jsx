@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Icon from "./assets/pen-to-square-solid.svg";
 import "./App.css";
 
 let empData = [];
