@@ -70,6 +70,8 @@ h1 {
 
 .Form button:hover {
   background-color: #0ca678;
+  /* state change */
+  cursor: pointer;
 }
 
 /* =======
@@ -138,4 +140,9 @@ tbody button {
 tbody button:hover {
   /* color */
   background-color: #f0a500;
+  /* state change */
+  cursor: pointer;
+}
+.Icons {
+  width: 16px;
 }
