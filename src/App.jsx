@@ -2,19 +2,14 @@ import { useState } from "react";
 import "./App.css";
 
 let empData = [];
-
-
-
-
-
 function App(props) {
   const [fName, setfName] = useState("");
   const [lName, setlName] = useState("");
   const [useremail, setEmail] = useState("");
   const [formData, setFormData] = useState([]);
+  const [newForm, setNewForm] = useState([]);
   const [newBtnName, setnewBtnName] = useState(false);
-  const [arrayIndex , setarrayIndex] = useState(0);
-
+  const [arrayIndex, setarrayIndex] = useState(0);
 
   let whenOnchange = (e) => {
     const { name, value } = e.target;
@@ -30,73 +25,77 @@ function App(props) {
   return (
     <div className="App">
       <h1>Employees List</h1>
-      <h3>
-        Why I'm not adding my name here?
-        Because I'm owner.
-      </h3>
       <div className="Form">
-        <input
-          value={fName}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="First Name"
-          name="fName"
-        />
-        <input
-          value={lName}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="Last Name"
-          name="lName"
-        />
-        <input
-          value={useremail}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="Email"
-          name="email"
-        />
+        <label className="inputField">
+          <input
+            value={fName}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="fName"
+            required
+          />
+          <span className="placeholder">First Name</span>
+        </label>
+        <label className="inputField">
+          <input
+            value={lName}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="lName"
+            required
+          />
+          <span className="placeholder">Last Name</span>
+        </label>
+        <label className="inputField">
+          <input
+            value={useremail}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="email"
+            required
+          />
+          <span className="placeholder">Email</span>
+        </label>
         <button
           onClick={(e) => {
-            if (e.target.value=="Add Employee"){
-            if (fName == "" || lName == "" || useremail == "") {
-              alert("Please input All feilds");
-            } else {
-              if (useremail.includes("@") && useremail.includes(".")) {
-                setFormData([
-                  ...formData,
-                  { userfName: fName, userlName: lName, email: useremail },
-                ]);
-                setfName("");
-                setlName("");
-                setEmail("");
+            if (e.target.value == "Add Employee") {
+              if (fName == "" || lName == "" || useremail == "") {
+                alert("Please input All feilds");
               } else {
-                alert("Please enter valid email");
+                if (useremail.includes("@") && useremail.includes(".")) {
+                  setFormData([
+                    ...formData,
+                    { userfName: fName, userlName: lName, email: useremail },
+                  ]);
+                  setfName("");
+                  setlName("");
+                  setEmail("");
+                } else {
+                  alert("Please enter valid email");
+                }
               }
+            } else {
+              console.log("updating");
+              formData[arrayIndex].userfName = fName;
+              formData[arrayIndex].userlName = lName;
+              formData[arrayIndex].email = useremail;
+              setFormData(formData);
+              setfName("");
+              setlName("");
+              setEmail("");
+              setnewBtnName(false);
             }
-          }
-          else {
-            console.log("updating")
-            formData[arrayIndex].userfName = fName;
-            formData[arrayIndex].userlName = lName;
-            formData[arrayIndex].email = useremail;
-            setFormData(formData);
-            setfName("");
-            setlName("");
-            setEmail("");
-            setnewBtnName(false);
           }}
-        }
           type="add"
-          value={newBtnName ? "Update": props.btnName}
+          value={newBtnName ? "Update" : props.btnName}
         >
-          {newBtnName ? "Update": props.btnName}
+          {newBtnName ? "Update" : props.btnName}
         </button>
       </div>
       <table>
@@ -118,18 +117,20 @@ function App(props) {
                 <td>{data.userlName}</td>
                 <td>{data.email}</td>
                 <td>
-                  <button onClick={()=>{
-                    setnewBtnName(true);
-                    formData.map((newData, index) => {
-                      if (newData.email == data.email) {
-                        setarrayIndex(index);
-                        setfName(newData.userfName);
-                        setlName(newData.userlName);
-                        setEmail(newData.email);
-                        setFormData([...formData]);
-                      }
-                    });
-                  }}>
+                  <button
+                    onClick={() => {
+                      setnewBtnName(true);
+                      formData.map((newData, index) => {
+                        if (newData.email == data.email) {
+                          setarrayIndex(index);
+                          setfName(newData.userfName);
+                          setlName(newData.userlName);
+                          setEmail(newData.email);
+                          setFormData([...formData]);
+                        }
+                      });
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="Icons"
@@ -177,6 +178,7 @@ function App(props) {
 }
 
 App.defaultProps = {
-  btnName: "Add Employee",};
+  btnName: "Add Employee",
+};
 
 export default App;
