@@ -132,6 +132,7 @@ h1 {
 table {
   /* measurements */
   padding: 40px;
+  min-width: 900px;
   /* color */
   background-color: #fdffa9;
   /* border properties */
