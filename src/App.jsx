@@ -24,33 +24,42 @@ function App() {
     <div className="App">
       <h1>Employees List</h1>
       <div className="Form">
-        <input
-          value={fName}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="First Name"
-          name="fName"
-        />
-        <input
-          value={lName}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="Last Name"
-          name="lName"
-        />
-        <input
-          value={useremail}
-          onChange={(e) => {
-            whenOnchange(e);
-          }}
-          type="text"
-          placeholder="Email"
-          name="email"
-        />
+        <label className="inputField">
+          <input
+            value={fName}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="fName"
+            required
+          />
+          <span className="placeholder">First Name</span>
+        </label>
+        <label className="inputField">
+          <input
+            value={lName}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="lName"
+            required
+          />
+          <span className="placeholder">Last Name</span>
+        </label>
+        <label className="inputField">
+          <input
+            value={useremail}
+            onChange={(e) => {
+              whenOnchange(e);
+            }}
+            type="text"
+            name="email"
+            required
+          />
+          <span className="placeholder">Email</span>
+        </label>
         <button
           onClick={() => {
             if (fName == "" || lName == "" || useremail == "") {
