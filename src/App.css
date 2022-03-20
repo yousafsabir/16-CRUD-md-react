@@ -43,13 +43,12 @@ h1 {
   /* layouts */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 /* -------Styling Inputs--------- */
 .inputField {
   /* measurements */
   padding-top: 20px;
-  margin-bottom: 5px;
   /* position */
   position: relative;
 }
@@ -75,7 +74,6 @@ h1 {
   /* measurements */
   padding: 0 5px;
   /* color */
-  background-color: #fff;
   color: #888;
   /* text */
   font-size: 14px;
@@ -97,9 +95,10 @@ h1 {
 .inputField input:valid + .placeholder,
 .inputField input:focus + .placeholder {
   /* position */
-  top: 20px;
+  top: 15px;
   /* other properties */
   color: #222;
+  border-bottom: 4px solid #fff;
   font-size: 10px;
 }
 
@@ -107,6 +106,7 @@ h1 {
   /* measurements */
   width: fit-content;
   padding: 0.5rem 1rem;
+  margin-top: 10px;
   /* color */
   background-color: #019267;
   color: #fff;
